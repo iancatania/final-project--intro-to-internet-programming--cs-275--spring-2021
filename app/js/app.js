@@ -32,6 +32,24 @@ let createEvenDiamond = (diamond) => {
 
 };
 
+let diamondAnimate = (diamondSet) => {
+
+      let pos = 1;
+      let left = diamondSet.offsetLeft;
+      let windowSize = window.innerWidth;
+      let width = diamondSet.offsetWidth;
+
+      if (left > windowSize - width) {
+          pos = -1;
+      }
+
+      if (left < 0) {
+          pos = 1;
+      }
+
+      left += pos;
+      diamondSet.style.left = left + `px`;
+};
 
 
 window.onload = () => {
@@ -43,23 +61,11 @@ window.onload = () => {
       createOddDiamond(diamond);
     }
 
-    let pos = 1;
-    let left = diamondSet.offsetLeft;
+    if (diamond % 2 == 0) {
+      createEvenDiamond(diamond);
+    }
 
     setInterval(() => {
-
-        let windowSize = window.innerWidth;
-        let width = diamondSet.offsetWidth;
-
-        if (left > windowSize - width) {
-            pos = -1;
-        }
-
-        if (left < 0) {
-            pos = 1;
-        }
-
-        left += pos;
-        diamondSet.style.left = left + `px`;
-    }, 1); //interval for animation set at 1
+      diamondAnimate(diamondSet);
+    }, 1); //interval for animation set at 1)
 };
