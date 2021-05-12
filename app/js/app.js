@@ -58,30 +58,6 @@ let createDiamond = (diamond) => {
 
 };
 
-let diamondAnimate = (diamondSet) => {
-
-    let pos = 1;
-    let left = diamondSet.offsetLeft;
-    let windowSize = window.innerWidth;
-    let width = diamondSet.offsetWidth;
-
-    if (left > windowSize - width) {
-
-        pos = -1;
-
-    }
-
-    if (left < 0) {
-
-        pos = 1;
-
-    }
-
-    left += pos;
-
-    diamondSet.style.left = left + `px`;
-
-};
 
 
 window.onload = () => {
@@ -93,9 +69,29 @@ window.onload = () => {
       createDiamond(diamond);
     }
 
+    let pos = 1;
+    let left = diamondSet.offsetLeft;
+
     setInterval(() => {
 
-      diamondAnimate(diamondSet);
+      let windowSize = window.innerWidth;
+      let width = diamondSet.offsetWidth;
+
+      if (left > windowSize - width) {
+
+          pos = -1;
+
+      }
+
+      if (left < 0) {
+
+          pos = 1;
+
+      }
+
+      left += pos;
+
+      diamondSet.style.left = left + `px`;
 
     }, 1); //interval for animation set at 1 ms)
 };
