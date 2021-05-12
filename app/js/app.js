@@ -10,7 +10,7 @@ let createOddDiamond = (diamond) => {
 
       }
 
-      diamondPrint += `<br>`;      
+      diamondPrint += `<br>`;
   }
 
   for (let length = diamond - 2; length > 0; length -= 2) {
@@ -32,21 +32,34 @@ let createEvenDiamond = (diamond) => {
 
 };
 
-let diamondAnimate = () => {
 
-};
 
 window.onload = () => {
 
     let diamond = parseInt(prompt('Enter diamond size as a number', '0'));
+    let diamondSet = document.querySelector('div');
 
     if (diamond % 2 != 0) {
       createOddDiamond(diamond);
     }
 
-    else {
-      createEvenDiamond(diamond);
-    }
+    let pos = 1;
+    let left = diamondSet.offsetLeft;
 
-    diamondAnimate;
+    setInterval(() => {
+
+        let windowSize = window.innerWidth;
+        let width = diamondSet.offsetWidth;
+
+        if (left > windowSize - width) {
+            pos = -1;
+        }
+
+        if (left < 0) {
+            pos = 1;
+        }
+
+        left += pos;
+        diamondSet.style.left = left + `px`;
+    }, 1); //interval for animation set at 1
 };
