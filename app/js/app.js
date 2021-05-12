@@ -1,34 +1,33 @@
-let createOddDiamond = (diamond) => {
+let createDiamond = (diamond) => {
 
   let diamondPrint = ``;
 
-  for (let length = 1; length <= diamond; length += 2) {
+  if (diamond % 2 != 0) {
 
-      for (let height = 0; height < length; height++) {
+    for (let length = 1; length <= diamond; length += 2) {
 
-          diamondPrint += `*`;
+        for (let height = 0; height < length; height++) {
 
-      }
+            diamondPrint += `*`;
 
-      diamondPrint += `<br>`;
+        }
+
+        diamondPrint += `<br>`;
+    }
+
+    for (let length = diamond - 2; length > 0; length -= 2) {
+
+        for (let height = 0; height < length; height++) {
+
+            diamondPrint += `*`;
+
+        }
+
+        diamondPrint += `<br>`;
+    }
   }
 
-  for (let length = diamond - 2; length > 0; length -= 2) {
-
-      for (let height = 0; height < length; height++) {
-
-          diamondPrint += `*`;
-
-      }
-
-      diamondPrint += `<br>`;
-  }
-
-  document.querySelector('div').innerHTML = diamondPrint;
-
-};
-
-let createEvenDiamond = (diamond) => {
+  else if (diamond % 2 == 0) {
 
     let diamondPrint = ``;
 
@@ -53,8 +52,9 @@ let createEvenDiamond = (diamond) => {
 
         diamondPrint += `<br>`;
     }
+  }
 
-    document.querySelector('div').innerHTML = diamondPrint;
+  document.querySelector('div').innerHTML = diamondPrint;
 
 };
 
@@ -89,20 +89,12 @@ window.onload = () => {
     let diamond = parseInt(prompt('Enter diamond size as a number', '0'));
     let diamondSet = document.querySelector('div');
 
-    if (diamond % 2 != 0) {
-
-      createOddDiamond(diamond);
-
-    }
-
-    if (diamond % 2 == 0) {
-
-      createEvenDiamond(diamond);
-
+    if (diamond > 0) {
+      createDiamond(diamond);
     }
 
     setInterval(() => {
-      
+
       diamondAnimate(diamondSet);
 
     }, 1); //interval for animation set at 1 ms)
