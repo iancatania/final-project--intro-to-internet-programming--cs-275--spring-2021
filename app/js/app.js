@@ -1,27 +1,28 @@
 let createDiamond = (diamond) => { //function to generate diamond
 
-    let diamondPrint = ''; //empty string to store diamond content
+    let diamondPrint = ``; //empty string to store diamond content
 
     if (diamond % 2 !== 0) { //if the size input is odd
-    for (let length = 1; length <= diamond; length += 2) {
-        for (let height = 0; height < length; height++) {
-            diamondPrint += `*`;
+        for (let length = 1; length <= diamond; length += 2) {
+            for (let height = 0; height < length; height++) {
+                diamondPrint += `*`;
+            }
+            diamondPrint += `<br>`;
         }
-        diamondPrint += `<br>`;
-    }
 
-    for (let length = diamond - 2; length > 0; length -= 2) {
-        for (let height = 0; height < length; height++) {
-            diamondPrint += `*`;
+        for (let length = diamond - 2; length > 0; length -= 2) {
+            for (let height = 0; height < length; height++) {
+                diamondPrint += `*`;
+            }
+            diamondPrint += `<br>`;
+            document.querySelector(`div`).style.lineHeight = `60%`;
+        //changes line style height for odd diamonds
         }
-        diamondPrint += `<br>`;
-        document.querySelector('div').style.lineHeight = '60%'; //changes line style height for odd diamonds
     }
-}
 
     else {
 
-        diamondPrint = ' *'; //extra asterisk for even
+        diamondPrint = ` *`; //extra asterisk for even
 
         for (let length = 0; length <= diamond + 1; length += 2) {
             for (let height = 0; height < length; height++) {
@@ -34,17 +35,18 @@ let createDiamond = (diamond) => { //function to generate diamond
             for (let height = 0; height < length; height++) {
                 diamondPrint += `* `;
             }
-        diamondPrint += `<br>`;
+            diamondPrint += `<br>`;
         }
-        diamondPrint += ' *';
+        diamondPrint += ` *`;
     }
-    document.querySelector('div').innerHTML = diamondPrint; //sets the innerHTML of the div to the string content of diamondPrint
+    document.querySelector(`div`).innerHTML = diamondPrint;
+    //sets the innerHTML of the div to the string content of diamondPrint
 };
 
 window.onload = () => { //everything that is loaded when page loads
 
-    let diamond = parseInt(prompt('Enter diamond size as a number', '0'));
-    let diamondSet = document.querySelector('div');
+    let diamond = parseInt(prompt(`Enter diamond size as a number`, `0`));
+    let diamondSet = document.querySelector(`div`);
 
     createDiamond(diamond); //function call
 
