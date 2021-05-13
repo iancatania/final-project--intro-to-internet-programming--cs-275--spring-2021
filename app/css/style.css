@@ -27,6 +27,6 @@ h6 {
 div {
   border: 2px solid black;
   position: absolute;
-  font-family: monospace;
+  font-family: 'Courier New', monospace;
   text-align: center;
 }
