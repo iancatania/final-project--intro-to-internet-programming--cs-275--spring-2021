@@ -29,4 +29,5 @@ div {
   position: absolute;
   font-family: 'Courier New', monospace;
   text-align: center;
+  white-space: pre;
 }

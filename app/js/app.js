@@ -22,7 +22,7 @@ let createDiamond = (diamond) => { //function to generate diamond
 
     else {
 
-        diamondPrint = ` *`; //extra asterisk for even
+        diamondPrint = `* `; //extra asterisk for even
 
         for (let length = 0; length <= diamond + 1; length += 2) {
             for (let height = 0; height < length; height++) {
@@ -37,7 +37,7 @@ let createDiamond = (diamond) => { //function to generate diamond
             }
             diamondPrint += `<br>`;
         }
-        diamondPrint += ` *`;
+        diamondPrint += `* `;
     }
     document.querySelector(`div`).innerHTML = diamondPrint;
     //sets the innerHTML of the div to the string content of diamondPrint
@@ -63,12 +63,12 @@ window.onload = () => { //everything that is loaded when page loads
         let windowSize = window.innerWidth; //gets width of window
         let width = diamondSet.offsetWidth; //gets width of diamond
 
-        if (left > windowSize - width) { //moves diamond
-            pos = -1;
-        }
-
         if (left < 0) {
             pos = 1;
+        }
+
+        if (left > windowSize - width) { //moves diamond
+            pos = -1;
         }
 
         left += pos;
