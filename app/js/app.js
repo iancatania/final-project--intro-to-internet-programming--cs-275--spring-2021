@@ -5,9 +5,9 @@ let createDiamond = (diamond) => { //function to generate diamond
     if (diamond % 2 !== 0) { //if the size input is odd
         for (let length = 1; length <= diamond; length += 2) {
             for (let height = 0; height < length; height++) {
-                diamondPrint += `*`;
+                diamondPrint += `*`; //prints asterisks
             }
-            diamondPrint += `<br>`;
+            diamondPrint += `<br>`; //add new line
         }
 
         for (let length = diamond - 2; length > 0; length -= 2) {
@@ -26,7 +26,7 @@ let createDiamond = (diamond) => { //function to generate diamond
 
         for (let length = 0; length <= diamond + 1; length += 2) {
             for (let height = 0; height < length; height++) {
-                diamondPrint += `* `;
+                diamondPrint += `* `; //added spaces in between asterisks
             }
             diamondPrint += `<br>`;
         }
@@ -46,7 +46,8 @@ let createDiamond = (diamond) => { //function to generate diamond
 window.onload = () => { //everything that is loaded when page loads
 
     let diamond = parseInt(prompt(`Enter diamond size as a number`, `0`));
-    let diamondSet = document.querySelector(`div`);
+    //prompts user for size
+    let diamondSet = document.querySelector(`div`); //allows animation of div
 
     createDiamond(diamond); //function call
 
@@ -54,7 +55,7 @@ window.onload = () => { //everything that is loaded when page loads
         window.location.reload();
     }
 
-    let pos = 1;
+    let pos = 1; //initial position
     let left = diamondSet.offsetLeft;
 
     setInterval(() => { //animates diamond-container div
